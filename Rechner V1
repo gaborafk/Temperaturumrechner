@@ -1,0 +1,81 @@
+
+def Abfrage_V2(userName):
+    print("\nWelche Temperatur Einheit möchtest du Umrechnen?")
+    print("\nVefügbare Temperatur Einheiten:\nCelsius\nFahrenheit\nKelvin")
+    while True:
+        Einheit = input("\nGib die gewünschte Einheit ein:")
+        if str(Einheit):
+            if "Celsius" in Einheit:
+                Celsius = input("\nGib die Tempeatur in Grad Celsius ein:")
+                while True:
+                    if float(Celsius):
+                        Kelvin = float(Celsius) + 273.15
+                        Fahrneheit = float(Celsius) + 32
+                        print("\n" + str(Celsius) + " Grad Celsius sind " + str(Kelvin) + " Kelvin und " + str(
+                            Fahrneheit) + " Grad Fahrenheit.")
+                        Nachfrage(userName)
+                        return Celsius
+                    else:
+                        print("Das ist keine gültige Angabe für eine Temperatur.")
+            elif "Fahrenheit" in Einheit:
+                Fahrenheit = input("\nGib die Temperatur in Grad Fahrenheit ein: ")
+                while True:
+                    if float(Fahrenheit):
+                        Celsius = float(Fahrenheit) - 32
+                        Kelvin = float(Fahrenheit) + 255.372
+                        print(
+                            "\n" + str(Fahrenheit) + " Grad Fahrenheit sind " + str(Kelvin) + " Kelvin " + "und " + str(
+                                Celsius) + " Grad Celsius.")
+                        Nachfrage(userName)
+                        return Fahrenheit
+                    else:
+                        print("Das ist keine gültige Angabe für eine Temperatur.")
+            elif "Kelvin" in Einheit:
+                Kelvin = input("\nGib die Temperatur in Kelvin ein: ")
+                while True:
+                    if float(Kelvin):
+                        Celsius = float(Kelvin) - 273.15
+                        Fahrenheit = float(Kelvin) - 255.372
+                        print(
+                            "\n" + str(Kelvin) + "Kelvin sind " + str(Fahrenheit) + " Grad Fahrenheit " + "und " + str(
+                                Celsius) + " Grad Celsius.")
+                        Nachfrage(userName)
+                        return Kelvin
+                    else:
+                        print("Das ist keine gültige Angabe für eine Temperatur.")
+            else:
+                print("Das ist keine gültige angabe Für eine Einheit.")
+                print("Gross- und Kleinschreibung beachten")
+        else:
+            print("Das ist keine gültige angabe Für eine Einheit.")
+
+
+
+def Temperatur_Umrechner_V2():
+    print("\nHallo wie ist dein Name?")
+    while True:
+        userName = input("Name:")
+        try:
+            if str(userName):
+                print("\nHallo " + userName + " ich bin ein Temperatur Umrechner")
+                Abfrage_V2(userName)
+                return userName
+            elif str(userName):
+                print("Das ist keine gültige Angabe für einen Namen.")
+        except ValueError:
+            print("Das ist kein gültiger Name.")
+
+
+def Nachfrage(userName):
+    while True:
+        nachfrage = input("\nMöchtest du eine andere Temperatur Einheit umrechnen?")
+        if str(nachfrage):
+            if "Ja" in nachfrage:
+                Abfrage_V2(userName)
+            elif "Nein" in nachfrage:
+                print("\nDanke für dein Vertrauen " + userName + " und bis zum nächsten Mal")
+                break
+            else:
+                print("Das ist keine gültige Antwort")
+                print("Gross- und Kleinschreibung beachten")
+
